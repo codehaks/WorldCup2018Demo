@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WroldCupDemo.Models;
+using WorldCupDemo.Models;
 
-namespace WroldCupDemo.Data
+namespace WorldCupDemo.Data
 {
     public class WorldcupDbContext : DbContext
     {

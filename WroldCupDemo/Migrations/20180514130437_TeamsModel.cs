@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WroldCupDemo.Migrations
+namespace WorldCupDemo.Migrations
 {
     public partial class TeamsModel : Migration
     {

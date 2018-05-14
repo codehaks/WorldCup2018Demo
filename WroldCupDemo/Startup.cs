@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WroldCupDemo.Data;
+using WorldCupDemo.Data;
 
-namespace WroldCupDemo
+namespace WorldCupDemo
 {
     public class Startup
     {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WroldCupDemo.Data;
+using WorldCupDemo.Data;
 
-namespace WroldCupDemo.Migrations
+namespace WorldCupDemo.Migrations
 {
     [DbContext(typeof(WorldcupDbContext))]
     partial class WorldcupDbContextModelSnapshot : ModelSnapshot

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WroldCupDemo.Data;
+using WorldCupDemo.Data;
 
-namespace WroldCupDemo.Migrations
+namespace WorldCupDemo.Migrations
 {
     [DbContext(typeof(WorldcupDbContext))]
     [Migration("20180514124749_InitModel")]

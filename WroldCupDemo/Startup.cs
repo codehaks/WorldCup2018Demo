@@ -27,6 +27,8 @@ namespace WorldCupDemo
                 (options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
+
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -35,6 +37,8 @@ namespace WorldCupDemo
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {

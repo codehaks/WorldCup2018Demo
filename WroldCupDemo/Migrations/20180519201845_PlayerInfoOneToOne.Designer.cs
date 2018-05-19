@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorldCupDemo.Data;
 
 namespace WorldCupDemo.Migrations
 {
     [DbContext(typeof(WorldcupDbContext))]
-    partial class WorldcupDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519201845_PlayerInfoOneToOne")]
+    partial class PlayerInfoOneToOne
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,20 +46,13 @@ namespace WorldCupDemo.Migrations
 
             modelBuilder.Entity("WorldCupDemo.Models.PlayerInfo", b =>
                 {
-                    b.Property<int>("PlayerInfoId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("PlayerInfoId");
 
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("PlayerId");
-
                     b.HasKey("PlayerInfoId");
-
-                    b.HasIndex("PlayerId")
-                        .IsUnique();
 
                     b.ToTable("PlayersInfo");
                 });
@@ -108,7 +103,7 @@ namespace WorldCupDemo.Migrations
                 {
                     b.HasOne("WorldCupDemo.Models.Player", "Player")
                         .WithOne("PlayerInfo")
-                        .HasForeignKey("WorldCupDemo.Models.PlayerInfo", "PlayerId")
+                        .HasForeignKey("WorldCupDemo.Models.PlayerInfo", "PlayerInfoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

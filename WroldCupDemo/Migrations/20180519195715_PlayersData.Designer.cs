@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorldCupDemo.Data;
 
 namespace WorldCupDemo.Migrations
 {
     [DbContext(typeof(WorldcupDbContext))]
-    partial class WorldcupDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519195715_PlayersData")]
+    partial class PlayersData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,9 +26,9 @@ namespace WorldCupDemo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("FirstName");
 
-                    b.Property<int>("Number");
+                    b.Property<string>("LastName");
 
                     b.Property<int>("TeamId");
 
@@ -37,29 +39,9 @@ namespace WorldCupDemo.Migrations
                     b.ToTable("Players");
 
                     b.HasData(
-                        new { Id = 1, Name = "Sardar", Number = 0, TeamId = 1 },
-                        new { Id = 2, Name = "Karim", Number = 0, TeamId = 1 }
+                        new { Id = 1, FirstName = "Sardar", LastName = "Azmoon", TeamId = 1 },
+                        new { Id = 2, FirstName = "Karim", LastName = "Ansari", TeamId = 1 }
                     );
-                });
-
-            modelBuilder.Entity("WorldCupDemo.Models.PlayerInfo", b =>
-                {
-                    b.Property<int>("PlayerInfoId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<int>("PlayerId");
-
-                    b.HasKey("PlayerInfoId");
-
-                    b.HasIndex("PlayerId")
-                        .IsUnique();
-
-                    b.ToTable("PlayersInfo");
                 });
 
             modelBuilder.Entity("WorldCupDemo.Models.Team", b =>
@@ -101,14 +83,6 @@ namespace WorldCupDemo.Migrations
                     b.HasOne("WorldCupDemo.Models.Team", "Team")
                         .WithMany()
                         .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WorldCupDemo.Models.PlayerInfo", b =>
-                {
-                    b.HasOne("WorldCupDemo.Models.Player", "Player")
-                        .WithOne("PlayerInfo")
-                        .HasForeignKey("WorldCupDemo.Models.PlayerInfo", "PlayerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

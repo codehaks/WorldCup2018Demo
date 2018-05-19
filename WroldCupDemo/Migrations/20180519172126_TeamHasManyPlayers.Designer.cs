@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorldCupDemo.Data;
 
 namespace WorldCupDemo.Migrations
 {
     [DbContext(typeof(WorldcupDbContext))]
-    partial class WorldcupDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519172126_TeamHasManyPlayers")]
+    partial class TeamHasManyPlayers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,15 +58,11 @@ namespace WorldCupDemo.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("TeamId");
-
-                    b.Property<int?>("TeamId1");
+                    b.Property<int?>("TeamId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TeamId");
-
-                    b.HasIndex("TeamId1");
 
                     b.ToTable("Player");
                 });
@@ -128,14 +126,9 @@ namespace WorldCupDemo.Migrations
 
             modelBuilder.Entity("WorldCupDemo.Models.Player", b =>
                 {
-                    b.HasOne("WorldCupDemo.Models.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("WorldCupDemo.Models.Team")
-                        .WithMany("Players")
-                        .HasForeignKey("TeamId1");
+                        .WithMany()
+                        .HasForeignKey("TeamId");
                 });
 #pragma warning restore 612, 618
         }

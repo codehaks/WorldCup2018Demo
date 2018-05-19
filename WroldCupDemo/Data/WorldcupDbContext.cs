@@ -25,6 +25,10 @@ namespace WorldCupDemo.Data
             builder.Entity<Team>().HasIndex(t => t.Name).IsUnique();
             builder.Entity<Team>().Property(t => t.Name).IsRequired().HasMaxLength(50);
             builder.Entity<Team>().Property(t => t.Rank).HasColumnType("tinyint");
+
+            builder.Entity<Player>().HasOne<Team>().WithMany(p => p.Players);
+
+            builder.Entity<Match>().HasOne<Stadium>();
         }
     }
 }

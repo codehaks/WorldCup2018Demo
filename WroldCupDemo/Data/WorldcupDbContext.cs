@@ -22,7 +22,9 @@ namespace WorldCupDemo.Data
                     new Team { Id = 2, Name = "Morocco", GroupName = "B", Rank = 40, Appearances = 4, Titles = 0 }
                 );
 
-            builder.Entity<Team>().Property(t => t.Name).IsRequired();
+            builder.Entity<Team>().HasIndex(t => t.Name).IsUnique();
+            builder.Entity<Team>().Property(t => t.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Team>().Property(t => t.Rank).HasColumnType("tinyint");
         }
     }
 }

@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WorldCupDemo.Data;
 
 namespace WorldCupDemo.Migrations
 {
     [DbContext(typeof(WorldcupDbContext))]
-    partial class WorldcupDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519134209_TeamTitlesByte")]
+    partial class TeamTitlesByte
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,8 +36,7 @@ namespace WorldCupDemo.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<byte>("Rank")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Rank");
 
                     b.Property<byte>("Titles");
 
@@ -47,8 +48,8 @@ namespace WorldCupDemo.Migrations
                     b.ToTable("Teams");
 
                     b.HasData(
-                        new { Id = 1, Appearances = 4, Finals = 0, GroupName = "B", Name = "Iran", Rank = (byte)32, Titles = (byte)0 },
-                        new { Id = 2, Appearances = 4, Finals = 0, GroupName = "B", Name = "Morocco", Rank = (byte)40, Titles = (byte)0 }
+                        new { Id = 1, Appearances = 4, Finals = 0, GroupName = "B", Name = "Iran", Rank = 32, Titles = (byte)0 },
+                        new { Id = 2, Appearances = 4, Finals = 0, GroupName = "B", Name = "Morocco", Rank = 40, Titles = (byte)0 }
                     );
                 });
 #pragma warning restore 612, 618

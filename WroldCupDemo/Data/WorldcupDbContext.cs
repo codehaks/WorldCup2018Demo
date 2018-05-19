@@ -13,6 +13,7 @@ namespace WorldCupDemo.Data
             : base(options) { }
 
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

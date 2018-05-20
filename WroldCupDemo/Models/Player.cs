@@ -10,5 +10,8 @@ namespace WorldCupDemo.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public byte Number { get; set; }
+
+        public int TeamId { get; set; }
+        public Team Team { get; set; }
     }
 }

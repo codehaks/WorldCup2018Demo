@@ -27,6 +27,8 @@ namespace WorldCupDemo
                 (options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
+
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -36,10 +38,7 @@ namespace WorldCupDemo
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World Cup 2018 !");
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

@@ -56,7 +56,7 @@ namespace WorldCupDemo.Controllers
         [HttpGet]
         public IActionResult GetPlayershInfo()
         {
-            return Ok(_db.PlayersInfo);
+            return Ok(_db.Players.Include(p => p.Team).Include(p => p.PlayerInfo));
         }
     }
 }

@@ -29,9 +29,7 @@ namespace WorldCupDemo.Data
             builder.Entity<Team>().Property(t => t.Rank).HasColumnType("tinyint");
 
             builder.Entity<Player>()
-                .HasOne(p => p.PlayerInfo)
-                .WithOne(i => i.Player)
-                .HasForeignKey<PlayerInfo>(b => b.PlayerId);
+                .HasOne(p => p.PlayerInfo);
         }
     }
 }

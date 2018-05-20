@@ -28,7 +28,9 @@ namespace WorldCupDemo
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(
+            options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

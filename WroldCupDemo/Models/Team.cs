@@ -15,5 +15,7 @@ namespace WorldCupDemo.Models
         public byte Titles { get; set; }
         public int Rank { get; set; }
         public int Finals { get; set; }
+
+        public ICollection<Player> Players { get; set; }
     }
 }

@@ -14,10 +14,11 @@ namespace WorldCupDemo.Data
 
         public DbSet<Team> Teams { get; set; }
         public DbSet<Stadium> Stadiums { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Player>();
+            //builder.Entity<Player>();
 
             builder.Entity<Team>()
                 .HasData(

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,13 @@ namespace WorldCupDemo
         public IActionResult GetPlayers()
         {
             return Ok(_db.Set<Player>().ToList());
+        }
+
+        [Route("player/team")]
+        [HttpGet]
+        public IActionResult GetPlayersWithTeams()
+        {
+            return Ok(_db.Players.Include(p => p.Team).ToList());
         }
     }
 }
